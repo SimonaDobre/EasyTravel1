@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        tools:context=".AddEditActivity">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listaPosibleDestinationsRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/destinationTIL"
+            android:visibility="gone" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/travelNameTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="numele calatoriei"
+
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/travelNameED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/destinationTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/travelNameTIL"
+            android:hint="destinatia calatoriei">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/destinationED"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listaPosibleDestinationsRV"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Alege tipul calatoriei:"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGrup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView3">
+
+            <RadioButton
+                android:id="@+id/rb_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectTravelTypeRadioBtn"
+                android:text="City break" />
+
+            <RadioButton
+                android:id="@+id/rb_sea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectTravelTypeRadioBtn"
+                android:text="Sea side" />
+
+            <RadioButton
+                android:id="@+id/rb_mountain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="selectTravelTypeRadioBtn"
+                android:text="Mountains" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioGrup"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="10dp"
+            android:text="Alege pretul:"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/priceAddEditTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sb_price"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="0$"
+            android:textSize="24sp" />
+
+        <SeekBar
+            android:id="@+id/sb_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView4" />
+
+        <TextView
+            android:id="@+id/tv_dataStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceAddEditTV"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="10dp"
+            android:text="Alege data de inceput: " />
+
+        <EditText
+            android:id="@+id/ed_dataStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priceAddEditTV"
+            android:layout_alignBaseline="@id/tv_dataStart"
+            android:layout_toRightOf="@id/tv_dataStart"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/tv_dataEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dataStart"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Alegen data de sfarsit:" />
+
+        <EditText
+            android:id="@+id/ed_dataEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ed_dataStart"
+            android:layout_toRightOf="@id/tv_dataEnd"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName" />
+
+        <RatingBar
+            android:id="@+id/ratingBar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_dataEnd"
+            android:layout_marginTop="20dp"
+            android:max="5"
+            android:stepSize="1" />
+
+        <ImageView
+            android:id="@+id/iv_pickPhoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/ratingBar2"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/iv_takePhoto"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/photo_24" />
+
+        <ImageView
+            android:id="@+id/iv_takePhoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/ratingBar2"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
+
+        <ImageView
+            android:id="@+id/choseImageIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_pickPhoto"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/choseImageIV"
+            android:text="save" />
+    </RelativeLayout>
+
+</ScrollView>

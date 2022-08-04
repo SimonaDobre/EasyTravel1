@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="drawerWidth">300dp</dimen>
+
+    <dimen name="dimMenuToolbar">40dp</dimen>
+    <dimen name="marginMenuToolbar">20dp</dimen>
+    <dimen name="dimPicture">120dp</dimen>
+
+    <dimen name="marginTopContactUs">30dp</dimen>
+    <dimen name="marginLeftContactUs">20dp</dimen>
+
+    <dimen name="pictureHeight">270dp</dimen>
+
+    <dimen name="marginsNavigation">15dp</dimen>
+
+</resources>

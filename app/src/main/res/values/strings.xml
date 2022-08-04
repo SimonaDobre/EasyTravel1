@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">EasyTravel1</string>
+    <string name="title_activity_test">Test</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_test1">test1</string>
+
+    <string name="numeUser">Easy Travel</string>
+
+    <string name="email">easyTravel@gmail.com</string>
+
+    <string name="phone">0722123456</string>
+
+    <string name="fillAboutUs">   Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Etiam elit magna, condimentum eleifend lorem nec, commodo
+        auctor felis. Donec vulputate ante in hendrerit viverra. Aliquam fermentum
+        interdum tincidunt. Ut facilisis mauris nec sollicitudin convallis. Proin
+        turpis ex, imperdiet id diam sit amet, malesuada pellentesque sem. Nunc a
+        lacinia turpis, non ornare risus. Sed interdum lectus sit amet nunc aliquam
+        tempor. Pellentesque fermentum nisi id dolor mattis molestie. Integer nec
+        turpis consectetur, suscipit arcu vel, consequat nisl. Quisque sit amet
+        lectus et nunc consequat tempus.</string>
+
+
+</resources>

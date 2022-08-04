@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutUsDrawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="@dimen/marginLeftContactUs"
+    android:layout_marginRight="@dimen/marginLeftContactUs"
+    tools:context=".AboutUsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_menu" />
+
+        <TextView
+            android:id="@+id/aboutUsTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginTopContactUs"
+            android:layout_marginLeft="@dimen/marginTopContactUs"
+            android:layout_marginTop="@dimen/marginTopContactUs"
+            android:text="@string/fillAboutUs"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="@dimen/drawerWidth"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <include layout="@layout/navigation_menu" />
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>
