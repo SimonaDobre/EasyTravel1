@@ -12,7 +12,7 @@ import java.util.List;
 import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
-public interface TraveLDAO {
+public interface TravelDAO {
 
     @Insert(onConflict = REPLACE)
     void insertNewTravel(Travel travel);
@@ -25,7 +25,6 @@ public interface TraveLDAO {
 
     @Query("DELETE FROM generalTravelList")
     void deleteAllTravels();
-
 
     @Query("SELECT * FROM generalTravelList")
     LiveData<List<Travel>> getAllRegisteredTravels();

@@ -50,6 +50,16 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
 
     }
 
+    private void addNewTravel() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, AddEditActivity.class);
+                startActivityForResult(intent, REZULTAT_ADAUGARE);
+            }
+        });
+    }
+
     private void swipeToDelete() {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
@@ -70,96 +80,6 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
                         }).show();
             }
         }).attachToRecyclerView(rv);
-    }
-
-    private void addNewTravel() {
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, AddEditActivity.class);
-                startActivityForResult(intent, REZULTAT_ADAUGARE);
-            }
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            String name = data.getStringExtra(AddEditActivity.NAME_ADD_EDIT);
-            String destination = data.getStringExtra(AddEditActivity.DESTINATION_ADD_EDIT);
-            String type = data.getStringExtra(AddEditActivity.TYPE_ADD_EDIT);
-            int price = data.getIntExtra(AddEditActivity.PRICE_ADD_EDIT, 10);
-            String startDate = data.getStringExtra(AddEditActivity.START_DATE_ADD_EDIT);
-            String endDate = data.getStringExtra(AddEditActivity.END_DATE_ADD_EDIT);
-            int rating = data.getIntExtra(AddEditActivity.RATING_ADD_EDIT, 1);
-            String uriPicture = data.getStringExtra(AddEditActivity.URI_PICTURE_ADD_EDIT);
-
-            if (requestCode == REZULTAT_ADAUGARE) {
-                if (uriPicture != null) {
-                    Travel travelNou = new Travel(name, destination, type, price, startDate, endDate, rating, uriPicture, false);
-                    mTravelViewModel.insertViewModel(travelNou);
-                    Toast.makeText(HomeActivity.this, "SALVAT", Toast.LENGTH_SHORT).show();
-                } else {
-                    Travel travelNou = new Travel(name, destination, type, price, startDate, endDate, rating, null, false);
-                    mTravelViewModel.insertViewModel(travelNou);
-                    Toast.makeText(HomeActivity.this, "SALVAT cu poza DEFAULT", Toast.LENGTH_SHORT).show();
-                }
-            } else if (requestCode == REZULTAT_EDITARE) {
-                int idEditedTravel = data.getIntExtra(AddEditActivity.ID_CODE_FOR_EDIT, -1);
-                boolean isFav = data.getBooleanExtra(AddEditActivity.IS_FAVORITE_ADD_EDIT, false);
-                Travel editedTravel = new Travel(name, destination, type, price,
-                        startDate, endDate, rating,
-                        uriPicture, isFav);
-                editedTravel.setId(idEditedTravel);
-                mTravelViewModel.updateViewModel(editedTravel);
-            } else {
-                Toast.makeText(HomeActivity.this, "Nu s-a salvat", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-
-    public void menuMore(View v){
-        Toast.makeText(this, "MENU 3 PUNCTE", Toast.LENGTH_SHORT).show();
-    }
-
-    public void generalMenu(View v) {
-        openGeneralMenu(drawerLayout);
-    }
-
-    public static void openGeneralMenu(DrawerLayout drawerLayout) {
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
-
-    public void toAboutUs(View v) {
-        redirectToNewActivity(this, AboutUsActivity.class);
-    }
-
-    public void toContactUs(View v) {
-        redirectToNewActivity(this, ContactUsActivity.class);
-    }
-
-    public void toHomeActivity(View v) {
-        recreate();
-    }
-
-    public static void closeDrawer(DrawerLayout drawerLayout) {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-    }
-
-    public static void redirectToNewActivity(Activity activity, Class clasa) {
-        Intent intent = new Intent(activity, clasa);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        closeDrawer(drawerLayout);
     }
 
     @Override
@@ -200,7 +120,6 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
         mTravelViewModel.updateViewModel(tr);
     }
 
-
     @Override
     public void shareThisTravel(Travel tr) {
 //        Toast.makeText(HomeActivity.this, "Share travel " + tr.getDestination(), Toast.LENGTH_SHORT).show();
@@ -212,7 +131,86 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
                         + "Destination: " + tr.getDestination() + "\n"
                         + "Start date: " + tr.getStartDate() + "\n"
                         + "End date: " + tr.getEndDate() + "\n"
-                        + "Price: $" + tr.getPrice()  + "\n" ));
+                        + "Price: $" + tr.getPrice() + "\n"));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            String name = data.getStringExtra(AddEditActivity.NAME_ADD_EDIT);
+            String destination = data.getStringExtra(AddEditActivity.DESTINATION_ADD_EDIT);
+            String type = data.getStringExtra(AddEditActivity.TYPE_ADD_EDIT);
+            int price = data.getIntExtra(AddEditActivity.PRICE_ADD_EDIT, 10);
+            String startDate = data.getStringExtra(AddEditActivity.START_DATE_ADD_EDIT);
+            String endDate = data.getStringExtra(AddEditActivity.END_DATE_ADD_EDIT);
+            int rating = data.getIntExtra(AddEditActivity.RATING_ADD_EDIT, 1);
+            String uriPicture = data.getStringExtra(AddEditActivity.URI_PICTURE_ADD_EDIT);
+
+            if (requestCode == REZULTAT_ADAUGARE) {
+                if (uriPicture != null) {
+                    Travel travelNou = new Travel(name, destination, type, price, startDate, endDate, rating, uriPicture, false);
+                    mTravelViewModel.insertViewModel(travelNou);
+                    Toast.makeText(HomeActivity.this, "SALVAT", Toast.LENGTH_SHORT).show();
+                } else {
+                    Travel travelNou = new Travel(name, destination, type, price, startDate, endDate, rating, null, false);
+                    mTravelViewModel.insertViewModel(travelNou);
+                    Toast.makeText(HomeActivity.this, "SALVAT cu poza DEFAULT", Toast.LENGTH_SHORT).show();
+                }
+            } else if (requestCode == REZULTAT_EDITARE) {
+                int idEditedTravel = data.getIntExtra(AddEditActivity.ID_CODE_FOR_EDIT, -1);
+                boolean isFav = data.getBooleanExtra(AddEditActivity.IS_FAVORITE_ADD_EDIT, false);
+                Travel editedTravel = new Travel(name, destination, type, price,
+                        startDate, endDate, rating,
+                        uriPicture, isFav);
+                editedTravel.setId(idEditedTravel);
+                mTravelViewModel.updateViewModel(editedTravel);
+            } else {
+                Toast.makeText(HomeActivity.this, "Nu s-a salvat", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public void menuMore(View v) {
+        Toast.makeText(this, "MENU 3 PUNCTE", Toast.LENGTH_SHORT).show();
+    }
+
+    public void generalMenu(View v) {
+        openGeneralMenu(drawerLayout);
+    }
+
+    public static void openGeneralMenu(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void toAboutUs(View v) {
+        redirectToNewActivity(this, AboutUsActivity.class);
+    }
+
+    public void toContactUs(View v) {
+        redirectToNewActivity(this, ContactUsActivity.class);
+    }
+
+    public void toHomeActivity(View v) {
+        recreate();
+    }
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public static void redirectToNewActivity(Activity activity, Class clasa) {
+        Intent intent = new Intent(activity, clasa);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
     }
 
     private void initViews() {

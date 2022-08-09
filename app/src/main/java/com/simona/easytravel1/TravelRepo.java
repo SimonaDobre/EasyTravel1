@@ -1,7 +1,6 @@
 package com.simona.easytravel1;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 public class TravelRepo {
 
-    private TraveLDAO traveLDAO;
+    private TravelDAO traveLDAO;
     private LiveData<List<Travel>> arrayAllTravels;
     private LiveData<List<Travel>> arrayFavoriteTravels;
     private Travel oneTravelToBeShared;

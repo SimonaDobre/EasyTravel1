@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 @Database(entities = {Travel.class}, version = 6, exportSchema = false)
 public abstract class TravelRoomDataBase extends RoomDatabase {
 
-    public abstract TraveLDAO travelDAOmethodFromRoomDB();
+    public abstract TravelDAO travelDAOmethodFromRoomDB();
 
     private static TravelRoomDataBase travelDataBase;
 
@@ -39,7 +39,7 @@ public abstract class TravelRoomDataBase extends RoomDatabase {
 //
 //    private static class PopulateDbAsyncTaskkk extends AsyncTask<Void, Void, Void> {
 //
-//        private TraveLDAO traveLDAOOO;
+//        private TravelDAO traveLDAOOO;
 //
 //        public PopulateDbAsyncTaskkk(TravelRoomDataBase db) {
 //            traveLDAOOO = db.traveLDAOmetodaDinRoomBazaDeDate();
