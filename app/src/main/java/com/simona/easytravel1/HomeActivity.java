@@ -16,13 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.simona.easytravel1.dataBaseRelated.AdapterTravel;
+import com.simona.easytravel1.dataBaseRelated.EditMarkTravelInterface;
+import com.simona.easytravel1.dataBaseRelated.Travel;
+import com.simona.easytravel1.dataBaseRelated.TravelViewModel;
 
 import java.util.List;
 

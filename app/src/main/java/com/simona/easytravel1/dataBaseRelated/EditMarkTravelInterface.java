@@ -1,4 +1,4 @@
-package com.simona.easytravel1;
+package com.simona.easytravel1.dataBaseRelated;
 
 public interface EditMarkTravelInterface {
 

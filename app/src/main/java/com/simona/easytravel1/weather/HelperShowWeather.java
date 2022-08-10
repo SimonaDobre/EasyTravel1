@@ -1,7 +1,7 @@
 package com.simona.easytravel1.weather;
 
 import com.simona.easytravel1.BuildConfig;
-import com.simona.easytravel1.QueryInterceptor;
+import com.simona.easytravel1.dataBaseRelated.QueryInterceptor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

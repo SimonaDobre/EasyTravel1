@@ -1,4 +1,4 @@
-package com.simona.easytravel1;
+package com.simona.easytravel1.dataBaseRelated;
 
 import org.jetbrains.annotations.NotNull;
 

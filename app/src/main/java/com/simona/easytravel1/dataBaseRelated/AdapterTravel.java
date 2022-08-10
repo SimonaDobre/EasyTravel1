@@ -1,4 +1,4 @@
-package com.simona.easytravel1;
+package com.simona.easytravel1.dataBaseRelated;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.simona.easytravel1.R;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
