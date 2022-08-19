@@ -1,4 +1,4 @@
-package com.simona.easytravel1.dataBaseRelated;
+package com.simona.easytravel1.db;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -21,10 +21,10 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
-import com.simona.easytravel1.dataBaseRelated.AdapterTravel;
-import com.simona.easytravel1.dataBaseRelated.EditMarkTravelInterface;
-import com.simona.easytravel1.dataBaseRelated.Travel;
-import com.simona.easytravel1.dataBaseRelated.TravelViewModel;
+import com.simona.easytravel1.db.AdapterTravel;
+import com.simona.easytravel1.db.EditMarkTravelInterface;
+import com.simona.easytravel1.db.Travel;
+import com.simona.easytravel1.db.TravelViewModel;
 
 import java.util.List;
 
@@ -36,8 +36,8 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
 
     private TravelViewModel mTravelViewModel;
 
-    public static final int REZULTAT_ADAUGARE = 100;
-    public static final int REZULTAT_EDITARE = 200;
+    public static final int RESULT_AFER_ADD = 100;
+    public static final int RESULT_AFTER_EDIT = 200;
 
     DrawerLayout drawerLayout;
 
@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, AddEditActivity.class);
-                startActivityForResult(intent, REZULTAT_ADAUGARE);
+                startActivityForResult(intent, RESULT_AFER_ADD);
             }
         });
     }
@@ -98,7 +98,7 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
         i.putExtra(AddEditActivity.URI_PICTURE_ADD_EDIT, tr.getUriPicture());
         i.putExtra(AddEditActivity.IS_FAVORITE_ADD_EDIT, tr.isFavorite());
         Toast.makeText(HomeActivity.this, tr.getTravelName() + " trimis la EDITARE ", Toast.LENGTH_SHORT).show();
-        startActivityForResult(i, REZULTAT_EDITARE);
+        startActivityForResult(i, RESULT_AFTER_EDIT);
     }
 
     @Override
@@ -149,7 +149,7 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
             int rating = data.getIntExtra(AddEditActivity.RATING_ADD_EDIT, 1);
             String uriPicture = data.getStringExtra(AddEditActivity.URI_PICTURE_ADD_EDIT);
 
-            if (requestCode == REZULTAT_ADAUGARE) {
+            if (requestCode == RESULT_AFER_ADD) {
                 if (uriPicture != null) {
                     Travel travelNou = new Travel(name, destination, type, price, startDate, endDate, rating, uriPicture, false);
                     mTravelViewModel.insertViewModel(travelNou);
@@ -159,7 +159,7 @@ public class HomeActivity extends AppCompatActivity implements EditMarkTravelInt
                     mTravelViewModel.insertViewModel(travelNou);
                     Toast.makeText(HomeActivity.this, "SALVAT cu poza DEFAULT", Toast.LENGTH_SHORT).show();
                 }
-            } else if (requestCode == REZULTAT_EDITARE) {
+            } else if (requestCode == RESULT_AFTER_EDIT) {
                 int idEditedTravel = data.getIntExtra(AddEditActivity.ID_CODE_FOR_EDIT, -1);
                 boolean isFav = data.getBooleanExtra(AddEditActivity.IS_FAVORITE_ADD_EDIT, false);
                 Travel editedTravel = new Travel(name, destination, type, price,

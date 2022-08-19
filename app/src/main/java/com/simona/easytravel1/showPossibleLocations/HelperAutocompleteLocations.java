@@ -1,7 +1,7 @@
 package com.simona.easytravel1.showPossibleLocations;
 
 import com.simona.easytravel1.BuildConfig;
-import com.simona.easytravel1.dataBaseRelated.QueryInterceptor;
+import com.simona.easytravel1.db.MyInterceptor;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -17,7 +17,7 @@ public class HelperAutocompleteLocations {
     public static Retrofit generateRetrofitt(){
         if (retrofitLocations == null){
             OkHttpClient.Builder httpClientt = getHttpClient();
-            httpClientt.addInterceptor(new QueryInterceptor());
+            httpClientt.addInterceptor(new MyInterceptor());
 
             retrofitLocations = new Retrofit.Builder()
                     .baseUrl(BASE)

@@ -205,7 +205,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/choseImageIV"
-            android:text="save" />
+            android:text="save"
+            app:backgroundTint="#8BC34A" />
     </RelativeLayout>
 
 </ScrollView>

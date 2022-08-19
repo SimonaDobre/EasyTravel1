@@ -1,4 +1,4 @@
-package com.simona.easytravel1.dataBaseRelated;
+package com.simona.easytravel1.db;
 
 
 import android.content.Context;
@@ -28,7 +28,7 @@ public abstract class TravelRoomDataBase extends RoomDatabase {
 
 
 
-    // populare baza cu inregistrari random
+    // fill db with dummy data:
 //    private static RoomDatabase.Callback roomCallbackkk = new Callback() {
 //        @Override
 //        public void onCreate(@NonNull SupportSQLiteDatabase db) {
